@@ -299,7 +299,6 @@ if($('#ad').val()=='Y'){
          /*files를 찍으면 filesList안에 배열형태로 파일에 대한 정보가 나온다. 
          /name, size, type 등 말이다.*/
          var files=e.target.files;
-         console.log(files);
          var files_size=files[0].size;
          
          /* Array.prototype.slice.call(files)는 이 코드가 존재하는 함수의 매개변수로 넘어온 값을 Array(배열)로 변환하겠다는 것이다*/

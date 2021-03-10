@@ -98,7 +98,6 @@ $('#btn_createMultiChatRoom').on('click', function(){
 					user_id:user_id,
 					room_id:room_id
 			}
-			console.log(chatJoinRoomDTO);
 			
 			$.ajax({
 				url:"/chat/inviteFriends.chat",

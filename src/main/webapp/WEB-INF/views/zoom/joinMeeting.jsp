@@ -156,7 +156,6 @@
 		function scrollTop() {
 			$(window).scroll(function() {
 				var scrollValue = $(document).scrollTop();
-				//console.log(scrollValue); 
 				$(document).scrollTop(scrollValue);
 			});
 		}

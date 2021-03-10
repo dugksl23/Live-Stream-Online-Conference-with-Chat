@@ -16,7 +16,7 @@
 	text-align: center;
 }
    
-#chat{
+#chat
 	position:relative;
 	right:-200px;
 	bottom:200px;

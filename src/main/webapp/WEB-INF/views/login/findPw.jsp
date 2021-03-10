@@ -106,11 +106,9 @@
 							type:'post',
 							data:{id:id, email:email}, 
 							success:function(resp) {
-				                alert(resp);
-					            location.href="/";
+				                location.href="/";
 							},
 							fail:function(resp){
-								alert(resp);
 							}
 				        })
 				}

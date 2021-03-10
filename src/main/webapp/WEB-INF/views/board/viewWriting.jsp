@@ -389,7 +389,6 @@ $(document).on('click', '.deleteComment-btn', function(){
 				
 			},
 			fail:function(res){
-				console.log(res);
 			}
 		})
 		}else{
@@ -477,7 +476,6 @@ if('${userInfo[0].thumbnail_url}'!=''&&'${userInfo[0].sns_code}'=="02"){// direc
 function scrollTop(){
 	$(window).scroll(function () {
 		var scrollValue = $(document).scrollTop(); 
-		//console.log(scrollValue); 
 		$(document).scrollTop(scrollValue);
 	});
 }

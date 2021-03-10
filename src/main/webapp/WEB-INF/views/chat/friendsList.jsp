@@ -243,8 +243,6 @@ text-decoration-color: blue;
 			client = Stomp.over(sjs);
 
 			client.connect({}, function(){
-				console.log('본인용 채널을 생성을 위한 socket 연결 (개인용 pub/sub 서버 구축)');
-
 				var receiver_id=receiver.attr('id');
 				var receiver_thumbnail_url=receiver.find('.user_img').attr("src");
 				

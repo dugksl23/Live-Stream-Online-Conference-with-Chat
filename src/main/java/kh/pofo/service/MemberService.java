@@ -398,7 +398,6 @@ public class MemberService {
 	//첫번째 인자 : 복사할 데이터의 크기
 	//두번째 인자 : 저장할 file의 경로에 data 복사
 	
-	System.out.println("http://localhost/"+filesPath.getName()+"/"+save_Name+"");
 	return "/"+filesPath.getName()+"/"+save_Name+"";
 	}
 	

@@ -180,7 +180,6 @@ margin-top:5px;}
 		var client = Stomp.over(sjs);
 		//=========== 1. 채팅방 구독 및 메세지 수신 subscriber ========================
 		client.connect({}, function() {
-			console.log("구독 대상과의 채팅 서버의 socket 연결");
 			
 			// session에 저장된 room_id값을 사용하여 다시금 1:1 채팅방 개설
 			client.subscribe("/subscribe/chat/room/" + '${room_id}', function(res) {
@@ -369,8 +368,6 @@ margin-top:5px;}
         				
         				var updated_scrollHeight = $('.chat-body').prop('scrollHeight');
         				
-        				console.log("update 이전의 scrollHeight"+c_scrollHeight);
-        				console.log("update된 scrollTop"+updated_scrollHeight);
         				var top=(Number(updated_scrollHeight)-Number(c_scrollHeight));
         				$('.chat-body').scrollTop(top);
         			}
