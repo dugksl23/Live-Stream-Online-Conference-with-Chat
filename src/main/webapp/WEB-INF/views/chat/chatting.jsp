@@ -105,15 +105,18 @@ margin-top:5px;}
 	
 	
 	
-<!-- 		<!-- Modal -->
- 	    <div class="modal fade" id="join_meeting-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	        <div class="modal-dialog">
+	<!-- //=================================================================
+	==============================[zoom meeting holding용 modal] =============================-->
+	
+ 		<!-- Modal -->
+	    <div class="modal fade" id="join_meeting-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	        <div class="modal-dialog modal-dialog-centered modal-sm">
 	            <div class="modal-content">
 	                <div class="modal-header">
 	                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	                </div>
 	                <div id="reg_tutor-Modal" class="modal-body">
-	                      	<iframe id="zoom_iframe" src="/zoom/regTutor_Iframe.zoom" style="height:250px;"></iframe>
+	                      	<iframe id="zoom_iframe" src="/zoom/regTutor_Iframe.zoom" style="height:250px; width:300px;"></iframe>
 					 </div>
 	                <div class="modal-footer">
 	                	<button id="join_meeting" type="submit" class="btn btn-dark text-start" data-bs-dismiss="modal">Join Meeting</button>
@@ -121,8 +124,7 @@ margin-top:5px;}
 	                </div>
 	            </div>
 	        </div>
-	    </div> 
-	    
+	    </div>
 	    
 	    
 	

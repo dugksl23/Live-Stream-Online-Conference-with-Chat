@@ -244,12 +244,14 @@
 			})
 			
 		}
-		
-	/* 	zWs.onclose=function(){
-		}
-	 */	
+	}
 	
-	} 
+ 	/* zWs.onclose=function(){
+		$.ajax({
+			url:"/zoom/removeTutor.zoom",
+		})	
+ 	} */
+	
 	</script>
 
 	<!-- 비동기 생성된 또는 동기로 생성된 tutor table의  message 아이콘 클릭 이벤트 -->

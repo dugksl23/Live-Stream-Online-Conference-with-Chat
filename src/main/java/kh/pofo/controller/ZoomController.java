@@ -119,8 +119,9 @@ public class ZoomController {
 		String host_id = element.getAsJsonObject().get("id").getAsString();
 		String date=element.getAsJsonObject().get("date").getAsString();
 		
-		session.setAttribute("host_time",date);
-
+		session.setAttribute("host_time", date);
+		session.setAttribute("organizer", (String)session.getAttribute("id"));
+		System.out.println("다시 organizer가 됨");
 		int result = zService.setTutors(host_id);
 
 		return "redirect:/zoom/zoomBoard.zoom";
@@ -142,7 +143,7 @@ public class ZoomController {
 
 		List<MemberDTO> tutors= zService.searchTutors(host_id);
 		m.addAttribute("tutors",tutors);	
-
+		
 		return "/zoom/zoomBoard";
 	}
 
@@ -162,10 +163,9 @@ public class ZoomController {
 
 	@RequestMapping("/removeTutor.zoom")
 	@ResponseBody
-	public String removeTutor() {
-		
+	public String removeTutor(String cPage) {
+		System.out.println("organizer 삭제됨");
 		session.removeAttribute("organizer");
-		
 		return "";
 		
 	}

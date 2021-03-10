@@ -98,13 +98,13 @@ nav {
 	
  		<!-- Modal -->
 	    <div class="modal fade" id="zoom-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	        <div class="modal-dialog">
+	        <div class="modal-dialog modal-dialog-centered modal-sm">
 	            <div class="modal-content">
 	                <div class="modal-header">
 	                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	                </div>
 	                <div id="reg_tutor-Modal" class="modal-body">
-	                      	<iframe id="zoom_iframe" src="/zoom/regTutor_Iframe.zoom" style="height:250px;"></iframe>
+	                      	<iframe id="zoom_iframe" src="/zoom/regTutor_Iframe.zoom" style="height:250px; width:283px;"></iframe>
 					 </div>
 	                <div class="modal-footer">
 	                	<button id="join_meeting" type="submit" class="btn btn-dark text-start" data-bs-dismiss="modal">Join Meeting</button>

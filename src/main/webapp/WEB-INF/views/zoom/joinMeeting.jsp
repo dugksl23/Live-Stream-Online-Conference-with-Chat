@@ -153,6 +153,9 @@
 
 	<!--[스크롤 제자리 위치 function]========================================================-->
 	<script>
+		cPage="joinMeeting";
+	
+	
 		function scrollTop() {
 			$(window).scroll(function() {
 				var scrollValue = $(document).scrollTop();
@@ -225,7 +228,9 @@
 							}) 
 							
 					 
-						})	
+						})
+						
+						
 					}
 		}			
 

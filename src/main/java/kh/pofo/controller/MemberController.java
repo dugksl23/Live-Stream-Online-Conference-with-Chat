@@ -86,8 +86,6 @@ public class MemberController {
 	public String signOut(HttpSession session) {
 		System.out.println("카카오 로그아웃 도착");
 		mService.kakaoLogout((String)session.getAttribute("access_Token"));
-	    session.removeAttribute("access_Token");
-	    session.removeAttribute("id");
 	    session.invalidate();
 	    return "redirect:/";
 	}

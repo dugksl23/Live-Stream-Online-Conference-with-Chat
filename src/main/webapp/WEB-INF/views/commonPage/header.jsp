@@ -197,13 +197,23 @@ function connectSockJS(){
 </script>
 
 <script>
+var cPage;
 //==== zoom 회의가 끝나고, 회의 종료가 아닌 page 이동 시에 connection을 감지하기 위한 로직
 $(document).ready(function(){
  	$.ajax({
 		url:"/zoom/deleteTutors.zoom",
 		type:"get",
 		data:{host_id:'${id}'}
-	}) 
+	})
+	
+	// === organizer의 id가 있을 경우 삭제하겠다는 로직=====
+	if(cPage=='joinMeeting'){
+
+		$.ajax({
+			url:"/zoom/removeTutor.zoom",
+		})	
+	}
+		
 }) 
 
 </script>
