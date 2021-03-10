@@ -173,36 +173,10 @@ public class ChatController {
     		
     		int current_FriendsCount = cService.friendsCount((String)session.getAttribute("id"));
     		m.addAttribute("current_FriendsCount", current_FriendsCount);
-    		System.out.println("current Count?"+current_FriendsCount);
 
     		// ==== 1. 나의 친구리스트가 같다라는 전제를 base로 둔다.
-    		List<ConcurrentHashMap<String, Object>> friendsList=cService.friendsList((String)session.getAttribute("id")); //친추된 친구의 수가 4일 경우
+    		List<Map<String, Object>> friendsList=cService.friendsList((String)session.getAttribute("id")); //친추된 친구의 수가 4일 경우
     		m.addAttribute("friendsList", friendsList);
-    		
-    		//=== 2. 타인이 나를 친추했는지 여부 확인================	
-    		//       상대방의 친추후, 채팅을 보내서 새로운 친구추가 기능을 위한 로직
-    		// ===  새로 친구 추가된 user를 확인하기 위한 if문 분기점 ===
-			/*
-			 * if(friendsCount<current_FriendsCount) {
-			 * System.out.println("현재 기존 친구 수보다 많아요!"); //1. 최신 조회 결과의 size가 클 경우, 기존 사이즈의
-			 * ROWNUM 이후부터 최신 추가된 친구들의 list를 불러온다. List<Map<String, Object>>
-			 * newFriendsList=cService.findNewFriendsList((String)session.getAttribute("id")
-			 * , current_FriendsCount);
-			 * System.out.println("current_FriendsCount :"+current_FriendsCount);
-			 * 
-			 * //* 2021.03.05 java.util.ConcurrentModificationException error // 에러 이유 :
-			 * list의 index를 참조하여 2중 foreach가 돌고 있기에. 2중 for문의 index를 건드리지 않고 안전하게 삭제하기 위해서는
-			 * // 해결책 : ConcurrentHashMap (동기화처리를 지원함.) for(Map<String, Object>
-			 * i:friendsList) { for(Map<String, Object> j:newFriendsList) {
-			 * 
-			 * if(i.get("friends_id")==j.get("friends_id")) { i.remove("user_id");
-			 * i.remove("room_id"); i.remove("thumbnail_url"); i.remove("join_id"); } } }
-			 * 
-			 * m.addAttribute("friendsList", friendsList);// 기존 친구 list
-			 * m.addAttribute("newFriendsList", newFriendsList);// 친추된 친구list }
-			 */
-    		System.out.println("최종적은 친구의 수는?"+current_FriendsCount);
-    		session.setAttribute("current_FriendsCount", current_FriendsCount);
 
     	}
 
@@ -334,7 +308,7 @@ public class ChatController {
   	@RequestMapping("/addChatRoom.chat")
 	public String addChatRoom(Model model) {
 		
-  		List<ConcurrentHashMap<String, Object>> friendsList=cService.friendsList((String)session.getAttribute("id")); //친추된 친구의 수가 4일 경우
+  		List<Map<String, Object>> friendsList=cService.friendsList((String)session.getAttribute("id")); //친추된 친구의 수가 4일 경우
 		model.addAttribute("friendsList",friendsList);
   		
 		

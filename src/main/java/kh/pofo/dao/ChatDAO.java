@@ -64,9 +64,9 @@ public class ChatDAO {
 		return result;
 	}
 
-	public List<ConcurrentHashMap<String, Object>> friendsList(String user_id) {
+	public List<Map<String, Object>> friendsList(String user_id) {
 
-		List<ConcurrentHashMap<String, Object>> list=db.selectList("Chat.friendsList", user_id);
+		List<Map<String, Object>> list=db.selectList("Chat.friendsList", user_id);
 
 		return list;
 

@@ -93,19 +93,19 @@
 				var email=$('#email').val();
 				
 				if(id==""&&email==""){
-					alert("아이디와 이메일을 작성해주세요.");
+					("아이디와 이메일을 작성해주세요.");
 				}else if(id==""){
 					alert("아이디를 작성해주세요.");
 				}else if(email==""){
 					alert("이메일을 작성해주세요.")
 				}else{
 			
-						alert(id+email);
 						$.ajax({
 							url:'/member/findPw.member',
 							type:'post',
 							data:{id:id, email:email}, 
 							success:function(resp) {
+								alert(resp);
 				                location.href="/";
 							},
 							fail:function(resp){

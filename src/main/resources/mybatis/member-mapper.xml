@@ -37,6 +37,10 @@
 	select count(*) from member where id=#{id} and email=#{email}
 </select>
 
+<select id="existId" resultType="int">
+	select count(*) from member where name=#{name} and email=#{email}
+</select>
+
 <select id="findId" resultType="String">
 	select id from member where name=#{name} and email=#{email}
 </select>

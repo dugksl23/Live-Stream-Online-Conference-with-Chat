@@ -347,14 +347,15 @@ public class MemberService {
 	public String findId(MemberDTO dto) throws EmailException {
 		System.out.println(dto.getName()+dto.getEmail());
 		String msg="";
-		String id=mDao.findId(dto.getName(),dto.getEmail());
-		if(!id.contentEquals("")) {
-			//아이디 
-			dto.setId(id);
+		int result=mDao.existId(dto.getName(),dto.getEmail());
+		if(result!=0) {
+			
+			dto.setId(mDao.findId(dto.getName(), dto.getEmail()));
 			msg=sendEmail(dto,"findId");//sendEmail 메소드 호출
 			System.out.println(msg);
 		}else {
-			msg="등록된 이름 또는 Email 정보가 일치하지 않습니다.";
+			msg="등록된 이름 또는 Email 정보가 일치하지 않습니다."+
+				"확인 후 다시 이용해주세요.";
 		}
 	
 		return msg;

@@ -98,6 +98,15 @@ public class MemberDAO {
 		return result;
 	}
 	
+	public int existId(String name, String email) {
+		
+		Map<String, Object> param=new HashMap<>();
+		param.put("name", name);
+		param.put("email", email);
+		int result=db.selectOne("Member.existId", param);
+		return result; 
+	}
+	
 	public String findId(String name, String email) {
 		
 		Map<String, Object> param=new HashMap<>();

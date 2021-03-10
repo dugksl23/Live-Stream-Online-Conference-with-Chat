@@ -54,9 +54,9 @@ public class ChatService {
 
 
 
-	public List<ConcurrentHashMap<String, Object>> friendsList(String user_id) {
+	public List<Map<String, Object>> friendsList(String user_id) {
 
-		List<ConcurrentHashMap<String, Object>> list=cDAO.friendsList(user_id);
+		List<Map<String, Object>> list=cDAO.friendsList(user_id);
 
 		return list;
 

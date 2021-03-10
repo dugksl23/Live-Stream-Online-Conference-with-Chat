@@ -95,34 +95,12 @@
 	
 	<select id="friendsList" resultType="java.util.Map" resultMap="getChatList">
 		
-		select notme.*, m.thumbnail_url from member m, chat_friendslist cf, chatjoinroom me, chatjoinroom notme, chatroom cr 
-			where m.id=cf.user_id and
-				me.user_id!=notme.user_id and
-				cf.friends_id=notme.user_id and
-				me.room_id=notme.room_id and
-				me.join_id=notme.join_id and
-				m.id=me.user_id and 
-				cr.room_id=me.room_id and 
-				cr.room_id=notme.room_id and
-				m.id=#{value}
+		select notme.*,m.thumbnail_url  from chatjoinroom me, chatjoinroom notme, member m
+		where
+    		me.room_id=notme.room_id and me.user_id!=notme.user_id and notme.user_id=m.id and me.user_id=#{value}
+		
 	</select>
 	
-	<!-- 새로 추가된 친구를 감별하기 위한 기존의 친구의 수 이후의 친구를 추가. (*reg 기준으로 rownum으로 조회.) -->
-	<select id="findNewFriendsList" resultType="java.util.Map" resultMap="getChatList">
-		
-	select notme.*, m.thumbnail_url from member m, chat_friendslist cf, chatjoinroom me, chatjoinroom notme, chatroom cr 
-		where m.id=cf.user_id and
-		me.user_id!=notme.user_id and
-		cf.friends_id=notme.user_id and
-		me.room_id=notme.room_id and
-		me.join_id=notme.join_id and
-		m.id=me.user_id and 
-		cr.room_id=me.room_id and 
-		cr.room_id=notme.room_id and
-		m.id=#{user_id} and 
-		(notme.user_id) in (select friends_id from chat_friendslist where user_id=#{user_id} and rownum between #{startRowNum} and 10000)
-
-	</select>
 	
 	<select id="friendsCount" resultType="int">
 		select count(friends_id) from chat_friendslist where user_id=#{value}
