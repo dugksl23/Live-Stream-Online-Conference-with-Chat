@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>Responsive Registration Form Template</title>
+</head>
+
+<style>
+    .container-login-form-btn {
+        width: 100%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .login-form-btn {
+        font-family: Poppins-Medium;
+        font-size: 13px;
+        color: #fff;
+        line-height:2;
+        vertical-align: middle;
+        text-transform: uppercase;
+        border: 0px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        width: 25%;
+        height: 40px;
+        background-color: #57b846;
+        border-radius: 25px;
+        margin-right: 50px;
+     
+        box-shadow: 0 10px 30px 0px rgba(87, 184, 70, 0.5);
+        -moz-box-shadow: 0 10px 30px 0px rgba(87, 184, 70, 0.5);
+        -webkit-box-shadow: 0 10px 30px 0px rgba(87, 184, 70, 0.5);
+        -o-box-shadow: 0 10px 30px 0px rgba(87, 184, 70, 0.5);
+        -ms-box-shadow: 0 10px 30px 0px rgba(87, 184, 70, 0.5);
+
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+    }
+
+    .login-form-btn:hover {
+        background-color: #333333;
+        box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
+        -moz-box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
+        -webkit-box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
+        -o-box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
+        -ms-box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
+    }
+
+    .file_input_textbox {display: inline; height:30px; border: 1px solid;width:10%; margin: 0 auto;}
+	.file_input_div {display: inline; position:relative; width:80px; height:40px; overflow:hidden;}
+	.file_input_img_btn {padding:0 0 0 5px; height:30px; }
+	.file_input_hidden {
+        float:left;
+        font-size:29px; height:30px; position:absolute; 
+        right:0px; top:0px; opacity:0; filter: alpha(opacity=0);
+        -ms-filter: alpha(opacity=0); cursor:pointer;
+    }
+
+
+  
+</style>
+
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>Sign up</h2>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="/member/afterSignup.member" method="post" onsubmit="return false" enctype="multipart/form-data" id="signup-form">      
+
+    
+                    <div class="form-group" style="margin:auto; text-align: center;">
+                          <img id="thumbnail" class="d-block mx-auto mb-4" src="/resources/popupSignin/images/profile.jpg" alt="" width="72" height="72">
+                          
+                               <input type="text" id="fileName" class="file_input_textbox form-control" style="width:30%; margin: auto;" readonly>
+                          
+                          <div class="file_input_div ">
+                             <img src="/resources/popupSignin/images/open.jpg" class="file_input_img_btn" alt="open" />
+                              <input type="file" id="img-upload" name="thumbnail" class="file_input_hidden " onchange="javascript: document.getElementById('fileName').value = this.value"/>
+                           </div>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="exampleInputName">이름</label>
+                        <input type="text" class="form-control" id="id" placeholder="이름" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputName">아이디</label>
+                        <input type="name" class="form-control" id="name" placeholder="아이디" aria-describedby="idlHelp" maxlength='16' minlength='4' name="id" requried >
+                        <p></p>
+                        <button type="button" class="btn btn-outline-secondary" id="checkId">ID 중복 검사</button>
+                        <small class="form-text text-muted" id="checkId"></small>
+                    
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">비밀번호 </label>
+                        <input type="password" class="form-control" id="password1" placeholder="******" maxlength='16' minlength='6' name="password" required>
+                         <p></p>
+                         <input type="password" class="form-control" id="checkPw" placeholder="비밀번호 재입력" maxlength='16' minlength='6' required>
+                         <small class="form-text text-muted">비밀번호 재입력</small>
+                         <small class="form-text text-muted" id="checkpwResult"></small>
+                    </div>
+
+                   
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">이메일</label>
+                        <input type="email" class="form-control" id="email1" placeholder="Jem@email.com" aria-describedby="emailHelp" name="email">
+                        <small id="idlHelp" class="form-text text-muted">아이디 또는 비밀번호 찾기에 사용될 것입니다.</small>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="exampleInputContanct_number">전화번호</label>
+                        <input type="contanct_number" class="form-control" id="contanct_number" placeholder="010-1234-5678 or 01012345678" aria-describedby="emailHelp" name="contanct_number">
+                        <small id="emailHelp" class="form-text text-muted">자유롭게 기입해주세요.</small>
+                    </div>
+                   
+                   
+                   
+                    <div class="form-group">
+                        <label for="exampleInputAddress1">주소 </label>
+                        <input type="address1" class="form-control" id="address1" placeholder="서울 특별시 광진구" name="address1" required>
+                         <p></p>
+                         <input type="address2" class="form-control" id="address2" name="address2" placeholder="1234 Main St" required>
+                        <small class="form-text text-muted">기타 주소</small>
+                        <p></p>
+                        <button type="button" class="btn btn-outline-secondary" id="address_search_btn">주소 검색</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="exampleInputPost_code">우편 번호 </label>
+                        <input type="post_code" class="form-control" id="post_code" name="post_code" required>
+                        
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">광고수신  </label>
+                        <br>
+                        <input type=checkbox id="ad" name="get_ad" value='N'>
+								수신 동의
+				                          
+                    </div>
+                     <div class="container-login-form-btn">
+                         <button class="login-form-btn m-b-10" id="withdrawal_btn">
+                             회원 탈퇴
+                         </button>
+                         <button class="login-form-btn" id="cancel_btn">
+                             취소
+                         </button>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+    </div>        
+           
+           
+<!--=========================================================--> 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<!-- [ 회원가입 버튼 hide ] ================================================================== -->
+<script>
+    $('#signup').hide();
+</script>
+
+<!--  [ form submit 및 submit 버튼 클릭 이벤트 ] ================================================================== -->
+<script>
+ 		$('#signup_btn').on('click',function(){
+ 			return formSubmit();
+ 		})
+ 	
+ 		function formSubmit(){
+ 			alert("이벤트 작동");
+ 			if($('#id1').val()!=null){
+ 				alert("ajax 작동");
+ 				$.ajax({
+ 	  	            url:'/member/duplicateCheck.member',
+ 	  	            type:"post",
+ 	  	            data:{id:$('#id1').val()},
+ 	  	            success:function(res){
+ 	  	            	
+ 	  	            	if(res=="사용가능한 ID입니다."){
+ 	  	            		alert(res);
+ 	  	            		$('#signup-form').attr("onsubmit", true);
+ 	 	  	            	$('#signup-form').submit();
+ 	  	            	}
+ 	  	            }
+ 				})				
+ 			}
+ 	
+ 		}
+		
+</script> 
+
+ <!-- [ id 유효성 검사 ] ================================================================== -->
+  <script>
+    $('#checkId').on('click', function(){
+    	var id=$('#id1').val();
+    	if(id==""){
+  			alert("유효한 아이디를 입력해주세요.");
+  		}else if(id!=""){
+  			
+  			$.ajax({
+  	            url:'/member/duplicateCheck.member',
+  	            type:"post",
+  	            data:{id:$('#id1').val()},
+  	            success:function(res){
+  	            	  	            	
+  	            	$('#checkIdResult').html(res);
+  	                $('#checkIdResult').css('visibility', 'visible');
+  	             }
+  	           ,fail:function(res){
+  	            	 alert(res);
+  	            } 
+  	        })
+  		}
+
+    })
+</script>                      
+
+ <!-- ================================================================================= -->
+
+ <!-- [ 비번 유효성 검사 ] ================================================================== -->
+  <script>
+  $('#checkPw').on('input', function(){
+	  if($('#checkPw').val()!=$('#password').val()){
+		  $('#checkpwResult').html('비밀번호가 일치하지 않습니다.');
+	  }else{
+          $('#checkpwResult').html('비밀번호가 일치합니다.');
+	  }
+  })
+  
+  $('#password').on('input', function(){
+	  if($('#checkPw').val()!=$('#password').val()){
+		  $('#checkpwResult').html('비밀번호가 일치하지 않습니다.');
+	  }else{
+          $('#checkpwResult').html('비밀번호가 일치합니다.');
+	  }
+  })
+</script>
+<!-- [ 돌아가기(취소) 버튼 click 이벤트 ] ================================================================== -->
+<script>
+  	$('#cancel_btn').on('click', function(){
+  		location.href="/";
+  	})
+</script>
+
+
+<script>
+    
+// 광고 수신 여부 =====================================================================================	
+$('#ad').on('click', function(){
+    		
+    if($('#sns').val()=='N'){
+       	$('#sns').val('Y');
+    }else{
+        $('#sns').val('N');
+    }
+})
+          
+</script>
+
+ <!-- [ 다음 주소지 입력 함수 ] ================================================================== -->
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+   <script>
+		
+		 function daumPostcode() {
+		            new daum.Postcode({
+		                oncomplete: function(data) {
+		                    var roadAddr = data.roadAddress; // 도로명 주소 변수
+                            document.getElementById('postcode').value = data.zonecode;
+		                    document.getElementById("address1").value = roadAddr;
+		                    
+		                }
+		            }).open();
+		        }
+       
+       
+          let search = document.getElementById("address_search_btn");
+		        search.onclick = daumPostcode;
+	
+</script>
+
+<!-- [ 썸네일 업로드 이벤트 ] ==================================================================== -->
+   <script>
+     $('#img-upload').on('change', function(e){
+         var sel_files;
+         
+         /* e.target.files는 이벤트 객체인 e를 console에 찍어보면 type, target 등 노출*/
+         /*aget에 files를 입력하니 fileList안에 배열형태로 파일에 대한 정보가 나온다. name, size, type 등 말이다.*/
+         var files=e.target.files;
+         console.log(files);
+         /* Array.prototype.slice.call(files)는 이 코드가 존재하는 함수의 매개변수로 넘어온 값을 Array(배열)로 변환하겠다는 것이다*/
+         var filesArr=Array.prototype.slice.call(files);
+
+         
+         
+         /*fileArr는 배열로 되어있기 때문에 forEach를 쓸 수 있다. type.match를 통해 이미지 확장자만 업로드할 수 있도록 체크한다. 만약 이미지 확장자외에 다른 파일을 업로드 할 시 null이 반환된다.*/
+         filesArr.forEach(function(f){
+             if(!f.type.match('image.*')){
+                    alert('확장자는 이미지 파일만 가능합니다.');
+                    return;
+                }
+        sel_filse=f;
+        
+             
+        /* FileReader 객체 생성 */     
+        var reader=new FileReader();
+        /* reader의 onload가 함수 실행되면서
+        FileReader.onload는 load의 이벤트 핸들러로 읽기 동작이 성공적으로 완료 되었을 때마다 발생한다.*/
+        reader.onload=function(e){
+            /* 업로드된 이미지의 base64 인코딩 된 스트링 데이터 */
+            $('#thumbnail').attr("src", e.target.result);
+        }
+        
+          /* 
+                get_file[0] 을 읽어서 read 행위가 종료되면 loadend 이벤트가 트리거 되고 
+                onload 에 설정했던 return 으로 넘어간다.
+                이와 함게 base64 인코딩 된 스트링 데이터가 result 속성에 담겨진다.
+                readAsDataURL 메서드는 f를 읽어 오는 역할을 한다. 이 경우 업로드 된 파일의 정보를 읽는다.
+            */
+        reader.readAsDataURL(f);
+         })
+         
+     })
+</script>
+   
+  
+</body>
+
+</html>

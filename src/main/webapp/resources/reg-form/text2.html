@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<style>
+    
+    *{
+        border:1px solid;
+        margin: 0 auto;
+    }    
+    .file_input_textbox {height:30px; border: 1px solid;width:30%; margin: 0 auto;}
+	.file_input_div {display: inline; position:relative; width:80px; height:40px; overflow:hidden;}
+	.file_input_img_btn {padding:0 0 0 5px; height:30px; }
+	.file_input_hidden {
+        float:left;
+        font-size:29px; height:30px; position:absolute; 
+        right:0px; top:0px; opacity:0; filter: alpha(opacity=0);
+        -ms-filter: alpha(opacity=0); cursor:pointer;
+    }
+
+    
+</style>
+
+<body>
+   
+          <div class="form-group" style="margin:auto; text-align: center;">
+                           
+                           
+                          <input type="text" id="fileName" class="file_input_textbox form-control" style="width:50%; margin: auto;" readonly>
+                          
+                          <div class="file_input_div ">
+                             <img src="/resources/popupSignin/images/open.jpg" class="file_input_img_btn" alt="open" />
+                              <input type="file" id="img-upload" name="thumbnail" class="file_input_hidden " onchange="javascript: document.getElementById('fileName').value = this.value"/>
+                           </div>
+                    </div>
+    
+</body>
+</html>

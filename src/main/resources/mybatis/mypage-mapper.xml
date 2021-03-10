@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="Mypage">
+  
+ <select id="myInfo" resultType="kh.pofo.dto.MemberDTO">
+		SELECT * FROM member where id=#{id}
+</select>
+  
+  
+ <update id="updateMyInfo">
+		update member set password=#{password},name=#{name},
+		 email=#{email}, address1=#{address1}, address2=#{address2},
+		 post_code=#{post_code}, contact_number=#{contact_number}, get_ad=#{get_ad}, thumbnail_url=#{thumbnail_url} where id=#{id}
+</update>
+  
+ 
+<update id="withdrawal">
+	update member set withdrawal='Y' where id=#{id}
+</update>
+ 
+<update id="updatePw">
+	update member set password=#{pw} where id=#{id}
+</update> 
+  
+  
+ <update id="updateMyInfoForSnsUser">
+	update member set password=#{password}, address1=#{address1}, 
+					  address2=#{address2}, post_code=#{post_code}, 
+					  contact_number=#{contact_number}, 
+					  get_ad=#{get_ad} where id=#{id}
+</update>  
+  
+  </mapper>

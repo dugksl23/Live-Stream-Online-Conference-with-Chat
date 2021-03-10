@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Board">
+
+	<insert id="insertTest">
+		insert into writing values(writing_seq.nextval, '00', mainboard_seq.nextval, #{title}, #{contents}, #{writer}, sysdate, 'N', 'Y', 10)
+	</insert>
+
+	<select id="recordTotalCount" resultType="int">
+		select count(*) from writing where board_code = #{value}
+	</select>
+
+	<select id="recordTotalCountBySearch" resultType="int">
+		select count(*) from writing where board_code = #{board_code}
+		<if test="search!= ''">
+ 			and (${choice} like '%'||#{search}||'%') 
+ 		</if>
+	</select>
+	
+	<select id="boardList" resultType="kh.pofo.dto.WritingDTO">
+		select * from (select writing.*, row_number() over(order by writing_date desc) rn from writing where board_code=#{board_code}) where rn between #{startRowNum} and #{endRowNum} and writing_del!='Y' and writing_open='Y'
+	</select>
+
+	<insert id="mainBoard_writing">
+		insert into writing values(writing_seq.nextval, #{board_code}, mainboard_seq.nextval , #{writing_title}, #{writing_content}, #{writing_writer}, sysdate, 'N', #{writing_open}, #{writing_viewCount})
+	</insert>
+	
+	<update id="updateWriting">
+		update writing set writing_title=#{writing_title}, writing_content=#{writing_content} where writing_id=#{writing_id}
+	</update>
+	
+	<update id="deleteWriting">
+		update writing set writing_del='Y' where writing_id=#{writing_id}
+	</update>
+	
+	
+	
+	<select id="searchBy" resultType="kh.pofo.dto.WritingDTO">
+ 		select * from (select writing.*, row_number() over(order by writing_date desc) rn from writing)
+ 		 where rn between #{startRowNum} and #{endRowNum} 
+ 		 and board_code ='00'
+ 		<if test="search!= ''">
+ 			and (${choice} like '%'||#{search}||'%') 
+ 		</if>
+ 	</select>
+ 	
+ 	
+	
+	<select id="viewWriting" resultType="kh.pofo.dto.WritingDTO">
+		select * from writing where writing_id=#{writing_id}
+	</select>
+	
+	<resultMap type="java.util.Map" id="preNextDoc">
+		<result property="next_id" column="next_id"/>
+		<result property="next_title" column="next_title"/>
+		<result property="pre_id" column="pre_id"/>
+		<result property="pre_title" column="pre_title"/>
+	</resultMap>
+	
+	
+	<select id="preNext" resultType="java.util.Map" resultMap="preNextDoc">
+	SELECT *
+			FROM (
+
+    			select writing_id,
+    				   LEAD(uniq_bycode, 1) OVER (ORDER BY uniq_bycode DESC) AS next_id,
+					   LEAD(writing_title, 1, '다음 글이 없습니다') OVER (ORDER BY uniq_bycode DESC) AS next_title,
+
+        			   LAG(uniq_bycode, 1) OVER (ORDER BY uniq_bycode DESC) AS pre_id,
+					   LAG(writing_title, 1, '이전 글이 없습니다') OVER (ORDER BY uniq_bycode DESC) AS pre_title
+
+    				FROM writing WHERE board_code =#{uniq_bycode}
+			) where writing_id=#{writing_id}
+	</select>
+	
+	<update id="updateViewCount">
+		update writing set writing_viewcount=writing_viewcount+1 where writing_id=#{writing_id}
+	</update>	
+
+	
+	<resultMap id="commentCountbyRecord" type="java.util.Map">
+		<result property="writing_id" column="writing_id" />
+		<result property="commentcount" column="commentcount"/>
+	</resultMap>
+	
+	<select id="commentsCount" resultType="java.util.Map" resultMap="commentCountbyRecord">
+		select writing_id, count(writing_id)commentcount from comments where comment_del is null group by writing_id
+	</select>
+	
+	<select id="commentCountByWriting" resultType="int">
+		select count(*) from comments where writing_id=#{writing_id} and comment_del is null
+	</select>
+	
+	
+	
+	
+	<!-- 게시판 좋아요 기능 -->
+	<insert id="board_like">
+		insert into boardlike values (boardlike_seq.nextval, #{writing_id}, #{user_id})
+	</insert>
+	
+	<delete id="board_hate">
+		delete from boardlike where like_id=#{like_id}
+	</delete>
+	
+	<select id="likeUser" resultType="kh.pofo.dto.BoardlikeDTO">
+		select * from boardlike where writing_id=#{writing_id} and user_id=#{user_id}
+	</select>
+	
+	<select id="likeCount" resultType="int">
+		select count(*) from boardlike where writing_id=#{writing_id}
+	</select>
+	
+	
+	
+</mapper> 

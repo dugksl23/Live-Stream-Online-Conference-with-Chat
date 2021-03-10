@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="Member">
+  
+  
+  
+<insert id="k_signup">
+	  insert into member values(#{id}, '11', #{name}, sysdate, #{email}, null,null, null, null,'01','Y','N', #{thumbnail_url})
+</insert>
+
+<insert id="k_updateMyInfo">
+	  update member set name=#{name}, email=#{email}, thumbnail_url=#{thumbnail_url} where id=#{id}
+</insert>
+ 
+<select id="snsUserInfo" resultType="kh.pofo.dto.MemberDTO">
+	select * from member m, sns_type s where s.sns_code=m.sns_code and id=#{id}
+</select>   
+ 
+<select id="signin" resultType="int">
+	SELECT count(*) FROM member where id=#{id} and password= #{password} and withdrawal!='Y'
+</select>
+   
+
+  
+<insert id="signup">
+	  insert into member values(#{id}, #{password}, #{name}, sysdate, #{email}, #{address1}, #{address2}, #{post_code}, #{contact_number}, '02','Y', 'N', #{thumbnail_url})
+</insert>
+
+
+<select id="checkId" resultType="int">
+		SELECT count(*) FROM member where id=#{id}
+</select>
+
+<select id="findPw" resultType="int">
+	select count(*) from member where id=#{id} and email=#{email}
+</select>
+
+<select id="findId" resultType="String">
+	select id from member where name=#{name} and email=#{email}
+</select>
+  
+</mapper>

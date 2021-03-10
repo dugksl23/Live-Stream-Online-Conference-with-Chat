@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  
+<mapper namespace="Chat">
+
+
+	<insert id="createChatRoom">
+		insert into chatroom values(#{value})
+	</insert>
+	
+	
+	<insert id="addFriends">
+		insert into chat_friendslist values(#{user_id}, #{friends_id}, sysdate)
+	</insert>
+	
+	
+	
+	
+	<insert id="userJoin_Room">
+		insert into chatjoinroom values(#{join_id}, #{user_id}, #{room_id})
+	</insert>
+	
+
+	<select id="findRoomByRoom_id" resultType="int">
+	select count(*) from chatjoinroom sender, chatjoinroom receiver where sender.user_id=#{sender_id} and receiver.user_id=#{receiver_id} and sender.join_id=receiver.join_id
+	</select>
+	
+	
+	<select id="getRoom_id" resultType="kh.pofo.dto.ChatRoomDTO">
+		select sender.room_id from chatjoinroom sender, chatjoinroom receiver where sender.user_id=#{sender_id} and receiver.user_id=#{receiver_id} and sender.join_id=receiver.join_id
+	</select>
+	
+	
+	
+	<select id="searchFriends" resultType="kh.pofo.dto.MemberDTO">
+		select * from member where id=#{value}
+	</select>
+
+	
+	<resultMap type="java.util.Map" id="getChatList">
+		<result property="join_id" column="join_id"/>
+		<result property="user_id" column="user_id"/>
+		<result property="room_id" column="room_id"/>
+		<result property="thumbnail_url" column="thumbnail_url"/>
+	</resultMap>
+
+
+	<select id="joinUserList" resultType="java.util.Map"  resultMap="getChatList">
+	select notme.*, m.thumbnail_url from chatjoinroom me, chatjoinroom notme, member m
+    where  me.room_id=notme.room_id and me.user_id!=notme.user_id and id=notme.user_id and 
+    	me.user_id=#{id}
+    <if test="keyword!=''">
+		and m.id like '%'|| #{keyword}||'%' 
+	</if>	
+    </select>
+	
+	<select id="chatUserList" resultType="kh.pofo.dto.ChatDTO">
+	select chat_content, to_char(chat_date, 'hh:mi PM') "date", room_id from chatmessage where (chat_id, room_id) in
+	(select max(chat_id), room_id from chatmessage where room_id in
+	(select room_id from chatmessage where user_id=#{id} group by room_id) group by room_id)
+	 order by chat_id desc
+	</select>
+
+	
+	<insert id="saveChatMessage">
+		insert into chatmessage values (chatMessage_seq.nextval, #{chat_content}, sysdate, #{user_id}, #{room_id})
+	</insert>
+	
+	<select id="getChatMessageHistory" resultType="kh.pofo.dto.ChatDTO">
+		select 
+			 chat_id, 
+			 chat_content, 
+			 to_char(chat_date, 'hh:mi PM')"date", 
+			 user_id, 
+			 room_id, 
+			 rownumber
+		from (select chatmessage.*, row_number() over(order by chat_date desc) rownumber from chatmessage where room_id=#{room_id}) 
+		where rownumber between 1 and 100 order by chat_date desc
+	</select>
+	
+	
+	<select id="findChatMessage" resultType="int">
+		select count(user_id) from chatmessage where room_id = #{room_id} and user_id = #{receiver_id}
+	</select>
+	
+	
+	<!--to_char(chat_date, 'hh:mi AM') as "date"  -->
+	<select id="update_ChatMessage_History" resultType="kh.pofo.dto.ChatDTO">
+		select chat_id, chat_content, chat_date as "date", user_id, room_id, rownumber from (select chatmessage.*, row_number() over(order by chat_date desc) rownumber from chatmessage where room_id=#{room_id}) 
+		where rownumber between #{startRowNum} and #{endRowNum} order by chat_date desc
+	</select>
+	
+	<select id="friendsList" resultType="java.util.Map" resultMap="getChatList">
+		
+		select notme.*, m.thumbnail_url from member m, chat_friendslist cf, chatjoinroom me, chatjoinroom notme, chatroom cr 
+			where m.id=cf.user_id and
+				me.user_id!=notme.user_id and
+				cf.friends_id=notme.user_id and
+				me.room_id=notme.room_id and
+				me.join_id=notme.join_id and
+				m.id=me.user_id and 
+				cr.room_id=me.room_id and 
+				cr.room_id=notme.room_id and
+				m.id=#{value}
+	</select>
+	
+	<!-- 새로 추가된 친구를 감별하기 위한 기존의 친구의 수 이후의 친구를 추가. (*reg 기준으로 rownum으로 조회.) -->
+	<select id="findNewFriendsList" resultType="java.util.Map" resultMap="getChatList">
+		
+	select notme.*, m.thumbnail_url from member m, chat_friendslist cf, chatjoinroom me, chatjoinroom notme, chatroom cr 
+		where m.id=cf.user_id and
+		me.user_id!=notme.user_id and
+		cf.friends_id=notme.user_id and
+		me.room_id=notme.room_id and
+		me.join_id=notme.join_id and
+		m.id=me.user_id and 
+		cr.room_id=me.room_id and 
+		cr.room_id=notme.room_id and
+		m.id=#{user_id} and 
+		(notme.user_id) in (select friends_id from chat_friendslist where user_id=#{user_id} and rownum between #{startRowNum} and 10000)
+
+	</select>
+	
+	<select id="friendsCount" resultType="int">
+		select count(friends_id) from chat_friendslist where user_id=#{value}
+	</select>
+	
+	
+	
+	<select id="countNumberOfperson" resultType="int">
+		select count(user_id) from chatjoinroom where room_id=#{value}
+	</select>
+	
+	
+	<select id="checkRegFriends" resultType="int">
+		select count(*) from chat_friendslist where user_id=#{id} and friends_id=#{friends_id}
+	</select>
+	
+	
+	<resultMap type="java.util.Map" id="getFriendslistWithNoRoom">
+		<result property="friends_id" column="friends_id"/>
+		<result property="thumbnail_url" column="thumbnail_url"/>
+	</resultMap>
+		
+
+	
+	<select id="totalMessageCount" resultType="int">
+		select count(chat_content) from chatmessage where user_id=#{value}
+	</select>	
+
+	<select id="newMessageCount" resultType="kh.pofo.dto.ChatDTO">
+		select 
+			nvl(count(*)-1,0) "rownumber", 
+			room_id 
+   		from chatmessage 
+   		where chat_id between 
+   		(select max(chat_id) from chatmessage where user_id=#{value} and room_id in (select room_id from chatjoinroom where user_id=#{value})) 
+    	and
+    	(select max(chat_id) from chatmessage where user_id in (select user_id from chatjoinroom where room_id in (select room_id from chatjoinroom where user_id=#{value}) and user_id!=#{value}))
+    	group by room_id
+	</select>
+	
+	<select id="isRoom_id" resultType="int">
+		select count(room_id) from chatroom where room_id=#{value}
+	</select>	
+
+	<select id="multiChat" resultMap="getChatList" resultType="java.util.Map">
+		(select notme.*, m.thumbnail_url from chatjoinroom me, chatjoinroom notme, member m
+ 		   where  me.room_id=notme.room_id and me.user_id!=notme.user_id and id=notme.user_id and 
+    		me.user_id=#{value} and notme.room_id like '%'||'multi'||'%')
+	</select>
+	
+	<delete id="deleteRoom">
+		delete from chatjoinroom where room_id=#{room_id} and user_id=#{id}
+	</delete>
+
+</mapper>  

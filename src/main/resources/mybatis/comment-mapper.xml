@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="Comment">
+ 
+ <insert id="writeComment">
+insert into comments values(#{comment_writer}, comment_seq.nextval, #{writing_id},#{comment_content}, sysdate, null)
+</insert>
+
+
+<resultMap type="java.util.Map" id="commentList-thumbnail">
+		<result property="comment_writer" column="comment_writer"/>
+		<result property="comment_id" column="comment_id"/>
+		<result property="comment_content" column="comment_content"/>
+		<result property="comment_date" column="comment_date"/>
+		<result property="thumbnail_url" column="thumbnail_url"/>
+		<result property="sns_code" column="sns_code"/>	
+</resultMap>
+
+
+
+ <select id="commentList" resultType="java.util.Map" resultMap="commentList-thumbnail">
+select c.comment_writer, c.comment_id, c.comment_content, to_char(c.comment_date, 'YYYY-MM-DD HH24:MI:SS')"comment_date", m.thumbnail_url, m.sns_code from comments c, member m where writing_id=#{writing_id} and c.comment_writer=m.id and c.comment_del is null
+order by comment_date desc
+</select>
+
+ <select id="commentBox" resultType="java.util.Map" resultMap="commentList-thumbnail">
+select c.comment_writer, c.comment_id, c.comment_content, c.comment_date,m.thumbnail_url, m.sns_code from comments c, member m where c.comment_writer=m.id and c.comment_del is null and c.comment_id in (select max(comment_id) from comments where writing_id=#{writing_id}) order by comment_date desc
+</select>
+
+ <update id="deleteComment">
+update comments set comment_del=sysdate where comment_id=#{comment_id}
+</update>
+
+ <update id="updateComment">
+update comments set comment_content=#{comment_content} where comment_id=#{comment_id}
+</update>
+
+<select id="commentCountByWriting" resultType="int">
+	select count(*) from comments where writing_id=#{writing_id} and comment_del is null
+</select>
+
+
+</mapper> 

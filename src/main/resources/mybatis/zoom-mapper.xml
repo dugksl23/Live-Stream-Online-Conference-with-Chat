@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Zoom">
+
+	<insert id="setTutors">
+		insert into tutors values ( #{value}, sysdate )
+	</insert>
+
+
+	<select id="getTutors" resultType="kh.pofo.dto.MemberDTO">
+		select id, name, to_char(sysdate, 'hh:mi PM' )"email", thumbnail_url from tutors t, member m where m.id=t.host_id
+	</select>
+	
+	<delete id="deleteTutors">
+		delete from tutors where host_id=#{value}
+	</delete>
+
+	<select id="searchTutors" resultType="kh.pofo.dto.MemberDTO">
+		
+			select id, name, to_char(sysdate, 'hh:mi PM' )"email", thumbnail_url 
+			from tutors t, member m where m.id=t.host_id
+		<if test="host_id!=''">
+			and (t.host_id like '%'|| #{host_id} ||'%')
+		</if>
+	</select>
+	
+</mapper>

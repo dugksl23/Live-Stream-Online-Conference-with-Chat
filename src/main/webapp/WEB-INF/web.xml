@@ -1,0 +1,83 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+    version="3.0">
+     <!--비동기 처리를 해주는 이유는 클라이언트가 여러개일 경우 
+                 해당 클라이언트들이 동시에 데이터를 전송 할 수 있기에 해당 제어를 위해서 
+                 비동기 처리한다. 비동기 처리를 하지 않을 경우 1:1 통신은 에러가나지 않지만 
+        2개이상의 클라이언트가 접속하여 데이터를 주고받을 시  비동기 에러가 난다. 
+                 반드시 처리해 주자
+       --> 
+      
+      
+      
+      
+         
+	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+	</context-param>
+	
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Processes application requests -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	
+   <!-- 캐릭터 인코딩 필터 설정 -->
+   <!-- 컨트롤러에서 response.setCharacterEncoding()를 매번 실행하지 않기 위해 서블릿 필터를 이용해 처리 -->
+   <filter>
+      <filter-name>encodingFilter</filter-name>
+      <filter-class>org.springframework.web.filter.CharacterEncodingFilter
+      </filter-class>
+      <!-- ASYNC -->
+      <async-supported>true</async-supported>
+      
+      <init-param>
+         <param-name>encoding</param-name>
+         <param-value>UTF-8</param-value>
+      </init-param>
+      <init-param>
+         <param-name>forceEncoding</param-name>
+         <param-value>true</param-value>
+      </init-param>
+   </filter>
+
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+<!-- /*은 모든 통신에 대해 필터, *.do는 .do로 가는 모든 통신에 대하여 필터 -->
+	</filter-mapping>
+
+
+<!-- jsp 파일 utf-8 페이지 인코딩 설정 <%@ page pageEncoding="UTF-8" %> -->
+<jsp-config>
+    <jsp-property-group>
+        <url-pattern>*.jsp</url-pattern>
+        <page-encoding>UTF-8</page-encoding>
+    </jsp-property-group>
+</jsp-config>
+
+<!--      ASYNC-->
+
+
+</web-app>
