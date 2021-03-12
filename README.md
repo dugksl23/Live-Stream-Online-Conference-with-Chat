@@ -13,4 +13,4 @@ email address dugksl23@naver.com<br>
 ## 4. 실행 영상
 
 
-*기울어짐 글씨체입니다.
+*기울어짐 글씨체입니다._
