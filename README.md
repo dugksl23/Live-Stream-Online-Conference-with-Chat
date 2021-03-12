@@ -307,7 +307,7 @@
  #### 4. **화상 회의 게시판**
 	1) Zoom API를 활용한 화상 회의
 
- #### 4. **화상 회의 초대**
+ #### 5. **화상 회의 초대**
 	1) 채팅을 통한 화상 회의 초대
 	2) 채팅을 통한 회의 참가
 
@@ -320,6 +320,8 @@
 	
 ## 5. 주요 기능 설명
 
+--- 
+
 ### 게시판 
  - **게시글 읽기 페이지**
 
@@ -330,7 +332,7 @@
 
 ![image](https://user-images.githubusercontent.com/68539491/110902995-151d6a80-834a-11eb-8fb7-0b0419936f0c.png)
 
-
+---
 
 ### 마이페이지 (회원) 
  - **회원가입 페이지**
@@ -341,19 +343,33 @@
 
 ![image](https://user-images.githubusercontent.com/68539491/110903562-fc618480-834a-11eb-9590-7c731e9c644a.png)
 
+---
 
 ### 채팅
  - **친구 목록 페이지**
- - 
+
 ![image](https://user-images.githubusercontent.com/68539491/110903690-29ae3280-834b-11eb-9fd5-aecf9ad02ccd.png)
 
 
  - **채팅 목록 페이지**
- - 
+ 
 ![image](https://user-images.githubusercontent.com/68539491/110903708-33379a80-834b-11eb-8608-4d20dc86be08.png)
 
 
  - **1:1 채팅 페이지**
- - 
+ 
 ![image](https://user-images.githubusercontent.com/68539491/110903744-3fbbf300-834b-11eb-9fd6-8ec704b0d15f.png)
 
+
+---
+
+### 화상 회의
+ - **화상 회의 개최**
+ 
+![image](https://user-images.githubusercontent.com/68539491/110904064-bce76800-834b-11eb-81cd-9929ed48a724.png)
+![image](https://user-images.githubusercontent.com/68539491/110904137-d983a000-834b-11eb-8688-aa873eb48f4f.png)
+
+
+
+
+ 
