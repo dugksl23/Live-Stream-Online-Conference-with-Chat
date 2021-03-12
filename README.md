@@ -285,8 +285,8 @@
 	8) 좋아요
 
      - 게시글 테이블 페이지
-     	1) 게시글 보기
-	2) 글쓰기 
+	1) 게시글 읽기 
+	2) 글쓰기
 	3) 조건별 검색
 	4) Paging navi 
  
@@ -321,12 +321,12 @@
 ## 5. 주요 기능 설명
 
 #### 게시판 
- - 게시판의 게시글 읽기 페이지
+ - 게시글 읽기 페이지
 
- ![image](https://user-images.githubusercontent.com/68539491/110901249-624c0d00-8347-11eb-927c-26abfa4cc20a.png)
+![image](https://user-images.githubusercontent.com/68539491/110901249-624c0d00-8347-11eb-927c-26abfa4cc20a.png)
  
 
- - 게시판의 게시글 테이블 페이지
+ - 게시글 테이블 페이지
 
 ![image](https://user-images.githubusercontent.com/68539491/110902995-151d6a80-834a-11eb-8fb7-0b0419936f0c.png)
 
