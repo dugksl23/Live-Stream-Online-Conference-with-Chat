@@ -19,7 +19,6 @@
 
  - WEB 기반의 원격 회의 기능 및 채팅 기능을 통합한 원격 회의 전용 웹 사이트
 
----
 
 ## 2. 개발 환경
 
@@ -63,7 +62,6 @@
 * **WEB Hosting**
   * AWS EC2 Window
 
----
 
 ## 3. 개발 의존성
 
@@ -133,9 +131,6 @@
             <artifactId>jackson-core</artifactId>
             <version>2.9.9</version>
        </dependency>
-
-
-
 
     <dependency>
      <groupId>javax.servlet</groupId>
@@ -267,8 +262,6 @@
   </project>
 ```
 
----
-
 ## 4. 주요 기능 요약
 
  #### 1. **게시판**
@@ -304,8 +297,6 @@
 
  #### 4. **화상 회의 게시판** 
     	1) Zoom API를 활용한 화상 회의
-
----
 
 ## 5. 주요 기능 설명
 
