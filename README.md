@@ -22,23 +22,18 @@ email address dugksl23@naver.com<br>
 
 * **서버** 
   * Apache-tomacat-8.5
-
 * **Java EE IDE** 
   * Eclipse
- 
 * **DB** 
   * Oracle SQL Developer 11
- 
 * **개발 언어** 
   * Java (version 1.8)
   * HTML
   * CSS
   * JavaScript
   * JSP
- 
 * **프레임워크**
   * Spring Mybatis Legacy
-  
 * **라이브러리**
   * Jquery 3.5
   * Bootstrap 5
@@ -48,18 +43,14 @@ email address dugksl23@naver.com<br>
   * CKeditor5
   * Gson
   * JWT
- 
 * **형상관리**
-  * Github
-
+  * GithuB
 * **외부 API**
   * Kakao Login REST API
   * ZOOM API
   * Duam 우편번호 찾기 API
-
 * **Remote Hosting**
   * Aws EC2 Window
-
 ---
 
 # 주요 기능
