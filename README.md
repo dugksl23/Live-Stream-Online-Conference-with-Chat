@@ -320,16 +320,40 @@
 	
 ## 5. 주요 기능 설명
 
-#### 게시판 
- - 게시글 읽기 페이지
+### 게시판 
+ - **게시글 읽기 페이지**
 
 ![image](https://user-images.githubusercontent.com/68539491/110901249-624c0d00-8347-11eb-927c-26abfa4cc20a.png)
  
 
- - 게시글 테이블 페이지
+ - **게시글 테이블 페이지**
 
 ![image](https://user-images.githubusercontent.com/68539491/110902995-151d6a80-834a-11eb-8fb7-0b0419936f0c.png)
 
 
 
+### 마이페이지 (회원) 
+ - **회원가입 페이지**
+
+![image](https://user-images.githubusercontent.com/68539491/110903363-aee51780-834a-11eb-86bf-8ca069198f19.png)
+
+ - **회원정보 보기 페이지**
+
+![image](https://user-images.githubusercontent.com/68539491/110903562-fc618480-834a-11eb-9590-7c731e9c644a.png)
+
+
+### 채팅
+ - **친구 목록 페이지**
+ - 
+![image](https://user-images.githubusercontent.com/68539491/110903690-29ae3280-834b-11eb-9fd5-aecf9ad02ccd.png)
+
+
+ - **채팅 목록 페이지**
+ - 
+![image](https://user-images.githubusercontent.com/68539491/110903708-33379a80-834b-11eb-8608-4d20dc86be08.png)
+
+
+ - **1:1 채팅 페이지**
+ - 
+![image](https://user-images.githubusercontent.com/68539491/110903744-3fbbf300-834b-11eb-9fd6-8ec704b0d15f.png)
 
