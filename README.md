@@ -363,13 +363,30 @@
 
 ---
 
-### 화상 회의
+### 화상 회의 
  - **화상 회의 개최**
  
 ![image](https://user-images.githubusercontent.com/68539491/110904064-bce76800-834b-11eb-81cd-9929ed48a724.png)
 ![image](https://user-images.githubusercontent.com/68539491/110904137-d983a000-834b-11eb-8688-aa873eb48f4f.png)
+![image](https://user-images.githubusercontent.com/68539491/110904279-1354a680-834c-11eb-8be3-641494766d51.png)
 
 
+---
+
+### 화상 회의 초대 / 참가
+ - **화상 회의 초대**
+ 
+![image](https://user-images.githubusercontent.com/68539491/110904398-3ed79100-834c-11eb-8801-aee8a5cab171.png)
+ 
+  - **화상 회의 참가**
+  
+![image](https://user-images.githubusercontent.com/68539491/110904420-49922600-834c-11eb-8a99-4b3f9306cc15.png)
+![image](https://user-images.githubusercontent.com/68539491/110904456-5adb3280-834c-11eb-8992-e6c6bf92bfb9.png)
+
+	
+
+
+ 
 
 
  
