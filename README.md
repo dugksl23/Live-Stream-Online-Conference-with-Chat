@@ -57,7 +57,7 @@
 * **External API**
   * Kakao Login REST API
   * ZOOM API
-  * Duam 우편번호 찾기 API
+  * Duam postal code API
   
 * **WEB Hosting**
   * AWS EC2 Window
