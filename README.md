@@ -2,27 +2,25 @@
 
 
 **made by**  Yohan 김요한<br>
-**contact**  010-3905-1285<br>
+**contact**  (82) 10-3905-1285<br>
 **email address**  dugksl23@naver.com<br>
 **hosting addrres**  <http://13.209.87.252>
 
 # 목차
-#### 1. 프로젝트 소개
-#### 2. 개발 환경
-#### 3. 개발 의존성
-#### 4. 주요 기능 요약
-#### 5. 주요 기능 설명
+#### 1. Project Introduction
+#### 2. Development environment
+#### 3. Development dependencies
+#### 4. Main Features Summary
+#### 5. Main function description
 
 ---
 
-## 1. 프로젝트 소개
+## 1. Project Introduction
 
- - WEB 기반의 원격 회의 기능 및 채팅 기능을 통합한 원격 회의 전용 웹 사이트
-
-
+ - Provides web-based Live Streaming and Chatting complex services.
 
 
-## 2. 개발 환경
+## 2. Development environment
 
 * **WAS** 
   * Apache-tomacat-8.5
@@ -33,7 +31,7 @@
 * **DB** 
   * Oracle SQL Developer 11g
   
-* **개발 언어** 
+* **Languages** 
   * **Back-end** 
     * Java (jdk 1.8)
       *  JSP (JSTL) 
@@ -43,20 +41,21 @@
     * JavaScript
       * Jquery 3.5
        
-* **프레임워크**
+* **Framework**
   * Spring Mybatis Legacy
   * maven
   
-* **라이브러리**
+* **Libraries**
   * Bootstrap 5
   * Spring Sockets (WebSocket, SockJS, Stomp)
   * Commons Email
   * CKeditor5
  
-* **형상관리**
+* **Congifuation Management**
+  * Git
   * GithuB
   
-* **외부 API**
+* **External API**
   * Kakao Login REST API
   * ZOOM API
   * Duam 우편번호 찾기 API
@@ -65,10 +64,7 @@
   * AWS EC2 Window
 
 
-
-
-
-## 3. 개발 의존성
+## 3. Development dependencies
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -271,24 +267,22 @@
 
 
 
-## 4. 주요 기능 요약
+## 4. Main Features Summary
 
- #### 1. **게시판**
-     - 게시글 읽기 페이지  
-	1) 이전 글 및 다음 글
-	2) 댓글쓰기 
-	3) 댓글 수정
-	4) 댓글 삭제
-	5) 글 수정
-	6) 글 삭제
-	7) 이미지 업로드
-	8) 좋아요
+ #### 1. **Board**
+     - read the post page  
+	1) Previous article and next article
+	2) writing a comment and deletion and edit 
+	3) Writing a 
+	4) Post deletion and edit 
+	5) image upload
+	6) Like feature
 
      - 게시글 테이블 페이지
-	1) 게시글 읽기 
-	2) 글쓰기
-	3) 조건별 검색
-	4) Paging navi 
+	1) read the post
+	2) writing
+	3) Search by condition
+	4) Paging
  
  #### 2. **회원**
 	1) 회원가입
