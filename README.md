@@ -6,7 +6,7 @@
 **email address**  dugksl23@naver.com<br>
 **hosting addrres**  <http://13.209.87.252>
 
-# 목차
+# Index
 #### 1. Project Introduction
 #### 2. Development environment
 #### 3. Main Features Summary
