@@ -3,7 +3,7 @@
 
 **made by**  Yohan 김요한<br>
 **contact**  (82) 10-3905-1285<br>
-**email address**  dugksl23@naver.com<br>
+**email address**  dugksl23@gmail.com<br>
 **hosting addrres**  <http://13.209.87.252>
 
 # Index
